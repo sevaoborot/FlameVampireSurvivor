@@ -1,19 +1,19 @@
-import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:vps_source/main_character/main_character.dart';
+import 'package:vps_source/main_character/mc_controller.dart';
 
 class VpsGame extends FlameGame with HasKeyboardHandlerComponents{
-  VpsGame();
+
+  late MainCharacter mainCharacter;
+  late McController mcController;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    add(MainCharacter()
-        ..position = size / 2
-        ..width = 50
-        ..height = 100
-        ..anchor = Anchor.center
-    );
+    mcController = McController();
+    mainCharacter = MainCharacter(mcController);
+    add(mcController);
+    add(mainCharacter);
   }
 }

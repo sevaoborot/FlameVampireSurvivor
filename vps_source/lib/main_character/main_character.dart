@@ -1,48 +1,34 @@
 import 'package:flame/components.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:vps_source/vps_game.dart';
+import 'mc_controller.dart';
 
-class MainCharacter extends PositionComponent with KeyboardHandler, HasGameReference<VpsGame>{
+class MainCharacter extends PositionComponent with HasGameReference<VpsGame>{
+
+  final McController _controller;
+
+  MainCharacter(this._controller) : super();
 
   static final _paint = Paint()..color = Colors.white;
 
-  int _horizontalDirection = 0;
-  int _verticalDirection = 0;
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
 
   @override
-  void update (double dt){
-    velocity.x = _horizontalDirection * moveSpeed;
-    velocity.y = _verticalDirection * moveSpeed;
-    position += velocity * dt;
-    super.update(dt);
+  Future<void> onLoad() async{
+    position = size / 2;
+    width = 50;
+    height = 100;
+    anchor = Anchor.center;
   }
 
   @override
-  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
-    _horizontalDirection = 0;
-    _verticalDirection = 0;
-    _horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft))
-        ? -1
-        : 0;
-    _horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyD) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight))
-        ? 1
-        : 0;
-    _verticalDirection += (keysPressed.contains(LogicalKeyboardKey.keyW) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowUp))
-        ? -1
-        : 0;
-    _verticalDirection += (keysPressed.contains(LogicalKeyboardKey.keyS) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowDown))
-        ? 1
-        : 0;
-    return super.onKeyEvent(event, keysPressed);
+  void update (double dt){
+    velocity.x = _controller.horizontalDirection * moveSpeed;
+    velocity.y = _controller.verticalDirection * moveSpeed;
+    position += velocity * dt;
+    super.update(dt);
   }
 
   @override
