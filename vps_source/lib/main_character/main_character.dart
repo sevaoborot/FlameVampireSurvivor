@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:vps_source/vps_game.dart';
 import 'mc_controller.dart';
+import 'state_machine/state_machine.dart';
 
 class MainCharacter extends PositionComponent with HasGameReference<VpsGame>{
 
-  final McController _controller;
+  late McController _controller;
+  late StateMachine _stateMachine;
 
-  MainCharacter(this._controller) : super();
+  MainCharacter() : super();
 
   static final _paint = Paint()..color = Colors.white;
 
@@ -21,6 +23,10 @@ class MainCharacter extends PositionComponent with HasGameReference<VpsGame>{
     width = 50;
     height = 100;
     anchor = Anchor.center;
+
+    _controller = McController();
+    add(_controller);
+    _stateMachine = StateMachine(this); //если component не висит, add не прописываем
   }
 
   @override

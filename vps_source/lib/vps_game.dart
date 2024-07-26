@@ -6,14 +6,11 @@ import 'package:vps_source/main_character/mc_controller.dart';
 class VpsGame extends FlameGame with HasKeyboardHandlerComponents{
 
   late MainCharacter mainCharacter;
-  late McController mcController;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    mcController = McController();
-    mainCharacter = MainCharacter(mcController);
-    add(mcController);
+    mainCharacter = MainCharacter();
     add(mainCharacter);
   }
 }
