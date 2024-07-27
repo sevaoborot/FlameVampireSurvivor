@@ -1,17 +1,20 @@
 import 'package:flame/components.dart';
+import 'package:flame/sprite.dart';
 
 import 'package:vps_source/vps_game.dart';
 import 'mc_controller.dart';
 import 'state_machine/state_machine.dart';
 
-class MainCharacter extends SpriteComponent with HasGameReference<VpsGame>{
+class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>{
 
   late McController _controller;
   McController get controller {return _controller;}
   late StateMachine _stateMachine;
 
+  late SpriteSheet characterSprites;
+
   MainCharacter() : super(
-    size: Vector2(100, 100),
+    size: Vector2(65, 85),
     anchor: Anchor.center
   );
 
@@ -19,7 +22,18 @@ class MainCharacter extends SpriteComponent with HasGameReference<VpsGame>{
   Future<void> onLoad() async{
 
     position = size / 2;
-    sprite = await vpsSprite('character_sprites.png', 65, 53, 13, 17);
+
+    characterSprites = await vpsSpriteSheet('character_sprites.png', 16, 24);
+
+    animation = SpriteAnimation.fromFrameData(
+      characterSprites.image,
+      SpriteAnimationData([
+        characterSprites.createFrameData(2, 4, stepTime: 0.2),
+        characterSprites.createFrameData(1, 4, stepTime: 0.2),
+        characterSprites.createFrameData(2, 4, stepTime: 0.2),
+        characterSprites.createFrameData(3, 4, stepTime: 0.2)
+      ])
+    );
 
     _controller = McController();
     add(_controller);
