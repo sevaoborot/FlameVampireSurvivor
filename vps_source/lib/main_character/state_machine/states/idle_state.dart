@@ -7,7 +7,6 @@ class IdleState extends MovementState{
   @override
   void Enter(){
     super.Enter();
-    print('idle state');
   }
 
   @override

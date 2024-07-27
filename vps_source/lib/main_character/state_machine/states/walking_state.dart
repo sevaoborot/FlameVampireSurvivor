@@ -7,7 +7,6 @@ class WalkingState extends MovementState{
   @override
   void Enter(){
     super.Enter();
-    print('walking state');
   }
 
   @override

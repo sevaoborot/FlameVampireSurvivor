@@ -12,3 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   flame: ^1.18.0
+
+flutter:
+  assets:
+    - assets/images/character_sprites.png
