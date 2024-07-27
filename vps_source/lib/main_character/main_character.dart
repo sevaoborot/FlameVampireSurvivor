@@ -8,6 +8,8 @@ import 'state_machine/state_machine.dart';
 class MainCharacter extends PositionComponent with HasGameReference<VpsGame>{
 
   late McController _controller;
+  McController get controller {return _controller;}
+
   late StateMachine _stateMachine;
 
   MainCharacter() : super();
@@ -31,9 +33,14 @@ class MainCharacter extends PositionComponent with HasGameReference<VpsGame>{
 
   @override
   void update (double dt){
-    velocity.x = _controller.horizontalDirection * moveSpeed;
-    velocity.y = _controller.verticalDirection * moveSpeed;
-    position += velocity * dt;
+
+    _stateMachine.HandleInput();
+    _stateMachine.StateUpdate(dt);
+
+    //то, что ниже, убрать в мувмент стэйт
+    //velocity.x = _controller.horizontalDirection * moveSpeed;
+    //velocity.y = _controller.verticalDirection * moveSpeed;
+    //position += velocity * dt;
     super.update(dt);
   }
 

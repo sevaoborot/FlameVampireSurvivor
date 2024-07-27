@@ -3,5 +3,5 @@ abstract class IState{
   void Exit();
 
   void HandleInput();
-  void StateUpdate();
+  void StateUpdate(double dt);
 }
