@@ -20,20 +20,9 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   @override
   Future<void> onLoad() async{
-
     position = size / 2;
 
     characterSprites = await vpsSpriteSheet('character_sprites.png', 16, 24);
-
-    animation = SpriteAnimation.fromFrameData(
-      characterSprites.image,
-      SpriteAnimationData([
-        characterSprites.createFrameData(2, 4, stepTime: 0.2),
-        characterSprites.createFrameData(1, 4, stepTime: 0.2),
-        characterSprites.createFrameData(2, 4, stepTime: 0.2),
-        characterSprites.createFrameData(3, 4, stepTime: 0.2)
-      ])
-    );
 
     _controller = McController();
     add(_controller);
@@ -42,7 +31,6 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   @override
   void update (double dt){
-
     _stateMachine.HandleInput();
     _stateMachine.StateUpdate(dt);
     super.update(dt);

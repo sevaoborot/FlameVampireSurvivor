@@ -3,7 +3,6 @@ import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/sprite.dart';
-import 'package:flutter/animation.dart';
 import 'package:vps_source/main_character/main_character.dart';
 
 class VpsGame extends FlameGame with HasKeyboardHandlerComponents{
@@ -35,6 +34,8 @@ SpriteSheet vpsSpriteSheet(String ImageFile, double width, double height){
       srcSize: Vector2(width,height)
   );
 }
+
+
 
 
 

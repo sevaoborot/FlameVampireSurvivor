@@ -1,4 +1,5 @@
 import 'package:flame/components.dart';
+import 'package:flutter/services.dart';
 import 'package:vps_source/main_character/main_character.dart';
 import 'package:vps_source/main_character/state_machine/istate_switcher.dart';
 import 'package:vps_source/main_character/state_machine/state_data.dart';
@@ -13,6 +14,7 @@ class MovementState implements IState{
 
   IStateSwitcher get stateSwitcher {return _stateSwitcher;}
   StateData get data {return _data;}
+  MainCharacter get character {return _character;}
 
   MovementState(IStateSwitcher stateSwitcher, MainCharacter character, StateData data){
     _stateSwitcher = stateSwitcher;
@@ -41,6 +43,13 @@ class MovementState implements IState{
     _character.position += Vector2(_data.XVelocity, _data.YVelocity) * dt;
   }
 
-  bool IsInputZero() => _data.xyInput == Vector2.zero();
+  //bool IsInputZero() => _data.xyInput == Vector2.zero();
+  bool IsInputZero(){
+    if (_character.controller.horizontalDirection == 0 &&
+        _character.controller.verticalDirection == 0)
+      return true;
+    else return false;
+  }
+  //bool IsInputZero() => _character.controller.currentEvent == KeyUpEvent;
 
 }

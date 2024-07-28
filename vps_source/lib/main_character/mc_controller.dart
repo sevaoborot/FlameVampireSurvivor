@@ -13,24 +13,36 @@ class McController extends Component with KeyboardHandler{
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed){
-    _horizontalDirection = 0;
+
+    final LeftKey = keysPressed.contains(LogicalKeyboardKey.keyA) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowLeft);
+    final RightKey = keysPressed.contains(LogicalKeyboardKey.keyD) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowRight);
+    final DownKey = keysPressed.contains(LogicalKeyboardKey.keyS) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowDown);
+    final UpKey = keysPressed.contains(LogicalKeyboardKey.keyW) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowUp);
+
+
+     _horizontalDirection = 0;
     _verticalDirection = 0;
-    _horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft))
-        ? -1
-        : 0;
-    _horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyD) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight))
-        ? 1
-        : 0;
-    _verticalDirection += (keysPressed.contains(LogicalKeyboardKey.keyW) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowUp))
-        ? -1
-        : 0;
-    _verticalDirection += (keysPressed.contains(LogicalKeyboardKey.keyS) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowDown))
-        ? 1
-        : 0;
+
+      _horizontalDirection += LeftKey
+          ? -1
+          : 0;
+      _horizontalDirection += RightKey
+          ? 1
+          : 0;
+      _verticalDirection += UpKey
+          ? -1
+          : 0;
+      _verticalDirection += DownKey
+          ? 1
+          : 0;
+
+
+
+    //print(Vector2(horizontalDirection as double,verticalDirection as double));
     return super.onKeyEvent(event, keysPressed);
   }
 }
