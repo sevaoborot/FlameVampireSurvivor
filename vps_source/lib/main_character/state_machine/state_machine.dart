@@ -22,10 +22,10 @@ class StateMachine implements IStateSwitcher{
   }
 
   @override
-  void SwitchState<T extends IState>() {
-    IState state = _states.first;
+  void SwitchState<T extends IState>(int state) {
+    IState newState = _states[state];
     _currentState.Exit();
-    _currentState = state;
+    _currentState = newState;
     _currentState.Enter();
   }
 

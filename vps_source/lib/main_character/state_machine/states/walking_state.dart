@@ -9,21 +9,23 @@ class WalkingState extends MovementState{
   @override
   void Enter(){
     super.Enter();
-    //print('walking');
+    print('walking');
+    character.animation = SpriteAnimation.fromFrameData(
+        character.characterSprites.image,
+        SpriteAnimationData([
+          character.characterSprites.createFrameData(2, 4, stepTime: 0.2),
+          character.characterSprites.createFrameData(1, 4, stepTime: 0.2),
+          character.characterSprites.createFrameData(2, 4, stepTime: 0.2),
+          character.characterSprites.createFrameData(3, 4, stepTime: 0.2)
+        ])
+    );
   }
 
   @override
   void StateUpdate(double dt){
     super.StateUpdate(dt);
-    character.animation = SpriteAnimation.fromFrameData(
-      character.characterSprites.image,
-      SpriteAnimationData([
-        character.characterSprites.createFrameData(2, 4, stepTime: 0.2),
-        character.characterSprites.createFrameData(1, 4, stepTime: 0.2),
-        character.characterSprites.createFrameData(2, 4, stepTime: 0.2),
-        character.characterSprites.createFrameData(3, 4, stepTime: 0.2)
-      ])
-    );
-    if (IsInputZero()) stateSwitcher.SwitchState<IdleState>();
+    //character.position += ChangePosition() * dt;
+
+    if (IsInputZero()) stateSwitcher.SwitchState<IdleState>(0);
   }
 }

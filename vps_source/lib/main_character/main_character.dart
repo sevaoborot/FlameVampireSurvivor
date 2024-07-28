@@ -7,6 +7,9 @@ import 'state_machine/state_machine.dart';
 
 class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>{
 
+  @override
+  bool get debugMode => true;
+
   late McController _controller;
   McController get controller {return _controller;}
   late StateMachine _stateMachine;

@@ -8,12 +8,7 @@ class IdleState extends MovementState{
   @override
   void Enter(){
     super.Enter();
-    //print('idle');
-  }
-
-  @override
-  void StateUpdate(double dt){
-    super.StateUpdate(dt);
+    print('idle');
     character.animation = SpriteAnimation.fromFrameData(
         character.characterSprites.image,
         SpriteAnimationData([
@@ -23,7 +18,13 @@ class IdleState extends MovementState{
           character.characterSprites.createFrameData(2, 3, stepTime: 0.1),
         ])
     );
+  }
+
+  @override
+  void StateUpdate(double dt){
+    super.StateUpdate(dt);
+
     if (IsInputZero()) return;
-    stateSwitcher.SwitchState<WalkingState>();
+    stateSwitcher.SwitchState<WalkingState>(1);
   }
 }

@@ -34,8 +34,3 @@ SpriteSheet vpsSpriteSheet(String ImageFile, double width, double height){
       srcSize: Vector2(width,height)
   );
 }
-
-
-
-
-
