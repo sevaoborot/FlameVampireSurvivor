@@ -34,6 +34,8 @@ class MovementState implements IState{
         _character.controller.horizontalDirection as double,
         _character.controller.verticalDirection as double
     );
+    if (_data.xyInput != Vector2.zero())
+      _data.xyInputLast = _data.xyInput;
     _data.XVelocity = _data.xyInput.x * _data.speed;
     _data.YVelocity = _data.xyInput.y * _data.speed;
   }

@@ -22,8 +22,8 @@ class StateMachine implements IStateSwitcher{
   }
 
   @override
-  void SwitchState<T extends IState>(int state) {
-    IState newState = _states[state];
+  void SwitchState<T extends IState>() {
+    IState newState = _states.singleWhere((state) => state is T);
     _currentState.Exit();
     _currentState = newState;
     _currentState.Enter();
