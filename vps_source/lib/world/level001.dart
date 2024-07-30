@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:flame/camera.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_tiled/flame_tiled.dart';
-//import 'package:tiled/tiled.dart';
 
 class Level001 extends World{
 
@@ -15,7 +13,8 @@ class Level001 extends World{
 
     await Flame.images.load('Dungeon_Tileset.png');
 
-    level = await TiledComponent.load('level001.tmx', Vector2.all(16));
+    level = await TiledComponent.load('level001.tmx', Vector2.all(32));
+    //level.size ;
     add(level);
 
     return super.onLoad();

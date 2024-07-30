@@ -31,6 +31,12 @@ class VpsGame extends FlameGame with HasKeyboardHandlerComponents{
   }
 
   @override
+  void update(double dt){
+    camera.viewfinder.position = mainCharacter.position;
+    super.update(dt);
+  }
+
+  @override
   Color backgroundColor() {
     return const Color.fromARGB(255, 37, 19, 26);
   }
