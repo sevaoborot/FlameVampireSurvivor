@@ -6,8 +6,6 @@ class StateData{
 
   final double speed = 100;
 
-  //double get speed => _speed = 100;
-
   late Vector2 _xyInput = Vector2.zero();
 
   Vector2 get xyInput => _xyInput;

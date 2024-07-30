@@ -23,7 +23,8 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   MainCharacter() : super(
     size: Vector2(65, 85),
-    anchor: Anchor.center
+    anchor: Anchor.center,
+    priority: 1
   );
 
   @override
@@ -71,73 +72,73 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
       Vector2(0,-1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 0, stepTime: 0.1),
-            characterSprites.createFrameData(2, 0, stepTime: 0.1),
-            characterSprites.createFrameData(3, 0, stepTime: 0.1),
-            characterSprites.createFrameData(2, 0, stepTime: 0.1)
+            characterSprites.createFrameData(1, 0, stepTime: 0.15),
+            characterSprites.createFrameData(2, 0, stepTime: 0.15),
+            characterSprites.createFrameData(3, 0, stepTime: 0.15),
+            characterSprites.createFrameData(2, 0, stepTime: 0.15)
           ]),
       ),
       Vector2(1,-1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 1, stepTime: 0.1),
-            characterSprites.createFrameData(2, 1, stepTime: 0.1),
-            characterSprites.createFrameData(3, 1, stepTime: 0.1),
-            characterSprites.createFrameData(2, 1, stepTime: 0.1)
+            characterSprites.createFrameData(1, 1, stepTime: 0.15),
+            characterSprites.createFrameData(2, 1, stepTime: 0.15),
+            characterSprites.createFrameData(3, 1, stepTime: 0.15),
+            characterSprites.createFrameData(2, 1, stepTime: 0.15)
           ])
       ),
       Vector2(1,0): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 2, stepTime: 0.1),
-            characterSprites.createFrameData(2, 2, stepTime: 0.1),
-            characterSprites.createFrameData(3, 2, stepTime: 0.1),
-            characterSprites.createFrameData(2, 2, stepTime: 0.1)
+            characterSprites.createFrameData(1, 2, stepTime: 0.15),
+            characterSprites.createFrameData(2, 2, stepTime: 0.15),
+            characterSprites.createFrameData(3, 2, stepTime: 0.15),
+            characterSprites.createFrameData(2, 2, stepTime: 0.15)
           ])
       ),
       Vector2(1,1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 3, stepTime: 0.1),
-            characterSprites.createFrameData(2, 3, stepTime: 0.1),
-            characterSprites.createFrameData(3, 3, stepTime: 0.1),
-            characterSprites.createFrameData(2, 3, stepTime: 0.1)
+            characterSprites.createFrameData(1, 3, stepTime: 0.15),
+            characterSprites.createFrameData(2, 3, stepTime: 0.15),
+            characterSprites.createFrameData(3, 3, stepTime: 0.15),
+            characterSprites.createFrameData(2, 3, stepTime: 0.15)
           ])
       ),
       Vector2(0,1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 4, stepTime: 0.1),
-            characterSprites.createFrameData(2, 4, stepTime: 0.1),
-            characterSprites.createFrameData(3, 4, stepTime: 0.1),
-            characterSprites.createFrameData(2, 4, stepTime: 0.1)
+            characterSprites.createFrameData(1, 4, stepTime: 0.15),
+            characterSprites.createFrameData(2, 4, stepTime: 0.15),
+            characterSprites.createFrameData(3, 4, stepTime: 0.15),
+            characterSprites.createFrameData(2, 4, stepTime: 0.15)
           ])
       ),
       Vector2(-1,1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 5, stepTime: 0.1),
-            characterSprites.createFrameData(2, 5, stepTime: 0.1),
-            characterSprites.createFrameData(3, 5, stepTime: 0.1),
-            characterSprites.createFrameData(2, 5, stepTime: 0.1)
+            characterSprites.createFrameData(1, 5, stepTime: 0.15),
+            characterSprites.createFrameData(2, 5, stepTime: 0.15),
+            characterSprites.createFrameData(3, 5, stepTime: 0.15),
+            characterSprites.createFrameData(2, 5, stepTime: 0.15)
           ])
       ),
       Vector2(-1,0): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 6, stepTime: 0.1),
-            characterSprites.createFrameData(2, 6, stepTime: 0.1),
-            characterSprites.createFrameData(3, 6, stepTime: 0.1),
-            characterSprites.createFrameData(2, 6, stepTime: 0.1)
+            characterSprites.createFrameData(1, 6, stepTime: 0.15),
+            characterSprites.createFrameData(2, 6, stepTime: 0.15),
+            characterSprites.createFrameData(3, 6, stepTime: 0.15),
+            characterSprites.createFrameData(2, 6, stepTime: 0.15)
           ])
       ),
       Vector2(-1,-1): SpriteAnimation.fromFrameData(
           characterSprites.image,
           SpriteAnimationData([
-            characterSprites.createFrameData(1, 7, stepTime: 0.1),
-            characterSprites.createFrameData(2, 7, stepTime: 0.1),
-            characterSprites.createFrameData(3, 7, stepTime: 0.1),
-            characterSprites.createFrameData(2, 7, stepTime: 0.1)
+            characterSprites.createFrameData(1, 7, stepTime: 0.15),
+            characterSprites.createFrameData(2, 7, stepTime: 0.15),
+            characterSprites.createFrameData(3, 7, stepTime: 0.15),
+            characterSprites.createFrameData(2, 7, stepTime: 0.15)
           ])
       )
     };

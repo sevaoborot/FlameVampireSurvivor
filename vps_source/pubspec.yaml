@@ -12,7 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
   flame: ^1.18.0
+  flame_tiled: ^1.20.2
+  tiled: ^0.10.2
 
 flutter:
   assets:
     - assets/images/character_sprites.png
+    - assets/images/Dungeon_Tileset.png
+    - assets/tiles/Dungeon_Tileset.tsx
+    - assets/tiles/level001.tmx
