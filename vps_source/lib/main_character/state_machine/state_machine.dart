@@ -3,6 +3,7 @@ import 'package:vps_source/main_character/state_machine/istate_switcher.dart';
 import 'package:vps_source/main_character/state_machine/state_data.dart';
 import 'package:vps_source/main_character/state_machine/states/idle_state.dart';
 import 'package:vps_source/main_character/state_machine/states/istate.dart';
+import 'package:vps_source/main_character/state_machine/states/running_state.dart';
 import 'package:vps_source/main_character/state_machine/states/walking_state.dart';
 
 class StateMachine implements IStateSwitcher{
@@ -15,7 +16,8 @@ class StateMachine implements IStateSwitcher{
     _states = [
       //сюда прописываем все стейты
       IdleState(this, character, data),
-      WalkingState(this, character, data)
+      WalkingState(this, character, data),
+      RunningState(this, character, data),
     ];
     _currentState = _states[0];
     _currentState.Enter();

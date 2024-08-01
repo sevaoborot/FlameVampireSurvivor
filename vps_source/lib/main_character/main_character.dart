@@ -148,25 +148,43 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
     _controller = McController();
     add(_controller);
     _stateMachine = StateMachine(this); //если component не висит, add не прописываем
-    add(RectangleHitbox());
+    add(RectangleHitbox()    );
   }
 
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other){
 
-    if (other is LevelCollision) print('enter collision');
     super.onCollisionStart(intersectionPoints, other);
   }
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other){
-    if (other is LevelCollision) print('in collision');
+    if (other is WallCollision) {
+      if (intersectionPoints.length == 2){
+        if (intersectionPoints.elementAt(0).x == intersectionPoints.elementAt(1).x) {
+          Vector2 mid = (intersectionPoints.elementAt(0) +
+              intersectionPoints.elementAt(1)) /2;
+          Vector2 collisionNormal = absoluteCenter - mid;
+          double separationDistance = (size.x/2) - collisionNormal.length;
+          collisionNormal.normalize();
+          position += collisionNormal.scaled(separationDistance);
+        }
+        if (intersectionPoints.elementAt(0).y == intersectionPoints.elementAt(1).y) {
+          Vector2 mid = (intersectionPoints.elementAt(0) +
+              intersectionPoints.elementAt(1)) /2;
+          Vector2 collisionNormal = absoluteCenter - mid;
+          double separationDistance = (size.y/2) - collisionNormal.length;
+          collisionNormal.normalize();
+          position += collisionNormal.scaled(separationDistance);
+        }
+      }
+    }
     super.onCollision(intersectionPoints, other);
   }
 
   @override
   void onCollisionEnd(PositionComponent other){
-    if (other is LevelCollision) print('left collision');
+
     super.onCollisionEnd(other);
   }
 

@@ -1,5 +1,6 @@
 import 'package:vps_source/main_character/state_machine/states/idle_state.dart';
 import 'package:vps_source/main_character/state_machine/states/movement_state.dart';
+import 'package:vps_source/main_character/state_machine/states/running_state.dart';
 
 class WalkingState extends MovementState{
   WalkingState(super.stateSwitcher, super.character, super.data);
@@ -16,5 +17,6 @@ class WalkingState extends MovementState{
     super.StateUpdate(dt);
     character.animation = character.moveAnimation[data.xyInput];
     if (IsInputZero()) stateSwitcher.SwitchState<IdleState>();
+    if (runFactor > 1 && !IsInputZero()) stateSwitcher.SwitchState<RunningState>();
   }
 }

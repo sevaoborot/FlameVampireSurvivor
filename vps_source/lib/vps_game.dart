@@ -53,6 +53,6 @@ Sprite vpsSprite(String ImageFile, double x, double y, double width, double heig
 SpriteSheet vpsSpriteSheet(String ImageFile, double width, double height){
   return SpriteSheet(
       image: Flame.images.fromCache(ImageFile),
-      srcSize: Vector2(width,height)
+      srcSize: Vector2(width,height),
   );
 }

@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class LevelCollision extends PositionComponent with CollisionCallbacks{
+class WallCollision extends PositionComponent with CollisionCallbacks{
 
-  LevelCollision({position, size}) :
+  WallCollision({position, size}) :
       super(
         position: position,
         size: size,
@@ -14,7 +14,7 @@ class LevelCollision extends PositionComponent with CollisionCallbacks{
 
   @override
   FutureOr<void> onLoad() {
-    add(RectangleHitbox());
+    add(RectangleHitbox(collisionType: CollisionType.passive));
     return super.onLoad();
   }
 }

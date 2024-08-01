@@ -5,11 +5,13 @@ class McController extends Component with KeyboardHandler{
 
   McController();
 
+  bool _isRunning = false;
   int _horizontalDirection = 0;
   int _verticalDirection = 0;
 
   int get horizontalDirection {return _horizontalDirection;}
   int get verticalDirection{return _verticalDirection;}
+  bool get isRunning{return _isRunning;}
 
   @override
   bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed){
@@ -22,7 +24,7 @@ class McController extends Component with KeyboardHandler{
         keysPressed.contains(LogicalKeyboardKey.arrowDown);
     final UpKey = keysPressed.contains(LogicalKeyboardKey.keyW) ||
         keysPressed.contains(LogicalKeyboardKey.arrowUp);
-
+    final ShiftKey = keysPressed.contains(LogicalKeyboardKey.shiftLeft);
 
      _horizontalDirection = 0;
     _verticalDirection = 0;
@@ -39,10 +41,10 @@ class McController extends Component with KeyboardHandler{
       _verticalDirection += DownKey
           ? 1
           : 0;
+      _isRunning = ShiftKey
+          ? true
+          : false;
 
-
-
-    //print(Vector2(horizontalDirection as double,verticalDirection as double));
     return super.onKeyEvent(event, keysPressed);
   }
 }

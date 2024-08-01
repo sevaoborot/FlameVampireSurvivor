@@ -23,7 +23,7 @@ class Level001 extends World{
     if (collisionLayer != null){
       int temp = 0;
       for(final obj in collisionLayer.objects){
-        LevelCollision collision = LevelCollision(
+        WallCollision collision = WallCollision(
           position: Vector2(obj.x * 2, obj.y * 2),
           size: Vector2(obj.width * 2, obj.height * 2)
         );
