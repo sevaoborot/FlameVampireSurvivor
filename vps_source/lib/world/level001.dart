@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:vps_source/world/level_collisions.dart';
 
 class Level001 extends World{
 
@@ -11,13 +12,26 @@ class Level001 extends World{
   @override
   FutureOr<void> onLoad() async {
 
+    debugMode = true;
+
     await Flame.images.load('Dungeon_Tileset.png');
 
     level = await TiledComponent.load('level001.tmx', Vector2.all(32));
-    //level.size ;
     add(level);
+
+    final collisionLayer = level.tileMap.getLayer<ObjectGroup>('Collisions');
+    if (collisionLayer != null){
+      int temp = 0;
+      for(final obj in collisionLayer.objects){
+        LevelCollision collision = LevelCollision(
+          position: Vector2(obj.x * 2, obj.y * 2),
+          size: Vector2(obj.width * 2, obj.height * 2)
+        );
+        temp++;
+        add(collision);
+      }
+    }
 
     return super.onLoad();
   }
-
 }

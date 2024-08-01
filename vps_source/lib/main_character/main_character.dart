@@ -1,13 +1,15 @@
 import 'dart:ui';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
 
 import 'package:vps_source/vps_game.dart';
+import 'package:vps_source/world/level_collisions.dart';
 import 'mc_controller.dart';
 import 'state_machine/state_machine.dart';
 
-class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>{
+class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>, CollisionCallbacks{
 
   @override
   bool get debugMode => true;
@@ -29,7 +31,7 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   @override
   Future<void> onLoad() async{
-    position = size / 2;
+    position = Vector2(70, 90);
 
     characterSprites = await vpsSpriteSheet('character_sprites.png', 16, 24);
 
@@ -146,6 +148,26 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
     _controller = McController();
     add(_controller);
     _stateMachine = StateMachine(this); //если component не висит, add не прописываем
+    add(RectangleHitbox());
+  }
+
+  @override
+  void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other){
+
+    if (other is LevelCollision) print('enter collision');
+    super.onCollisionStart(intersectionPoints, other);
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other){
+    if (other is LevelCollision) print('in collision');
+    super.onCollision(intersectionPoints, other);
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other){
+    if (other is LevelCollision) print('left collision');
+    super.onCollisionEnd(other);
   }
 
   @override

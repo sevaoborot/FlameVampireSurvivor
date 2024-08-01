@@ -8,7 +8,7 @@ import 'package:flame/sprite.dart';
 import 'package:vps_source/main_character/main_character.dart';
 import 'package:vps_source/world/level001.dart';
 
-class VpsGame extends FlameGame with HasKeyboardHandlerComponents{
+class VpsGame extends FlameGame with HasKeyboardHandlerComponents, HasCollisionDetection{
 
   late MainCharacter mainCharacter;
 
