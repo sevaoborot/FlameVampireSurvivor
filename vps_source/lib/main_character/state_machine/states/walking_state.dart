@@ -9,13 +9,15 @@ class WalkingState extends MovementState{
   void Enter(){
     super.Enter();
     print('walking');
-    character.animation = character.moveAnimation[data.xyInputLast];
+    character.animation = character.moveAnimation[data.xyInputLast]
+      ?..stepTime = 0.15;
   }
 
   @override
   void StateUpdate(double dt){
     super.StateUpdate(dt);
-    character.animation = character.moveAnimation[data.xyInput];
+    character.animation = character.moveAnimation[data.xyInput]
+      ?..stepTime = 0.15;
     if (IsInputZero()) stateSwitcher.SwitchState<IdleState>();
     if (runFactor > 1 && !IsInputZero()) stateSwitcher.SwitchState<RunningState>();
   }
