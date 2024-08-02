@@ -148,7 +148,7 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
     _controller = McController();
     add(_controller);
     _stateMachine = StateMachine(this); //если component не висит, add не прописываем
-    add(RectangleHitbox()    );
+    add(RectangleHitbox());
   }
 
   @override

@@ -19,5 +19,6 @@ flutter:
   assets:
     - assets/images/character_sprites.png
     - assets/images/Dungeon_Tileset.png
+    - assets/images/coin.png
     - assets/tiles/Dungeon_Tileset.tsx
     - assets/tiles/level001.tmx

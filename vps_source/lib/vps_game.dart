@@ -16,9 +16,9 @@ class VpsGame extends FlameGame with HasKeyboardHandlerComponents, HasCollisionD
   Future<void> onLoad() async {
     await super.onLoad();
 
-
     await Flame.images.loadAll([
-      'character_sprites.png'
+      'character_sprites.png',
+      'coin.png'
     ]);
 
     world = Level001();

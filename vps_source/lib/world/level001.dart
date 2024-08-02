@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/flame.dart';
 import 'package:flame_tiled/flame_tiled.dart';
+import 'package:vps_source/main_character/obj_pool/vampire_coin.dart';
 import 'package:vps_source/world/level_collisions.dart';
 
 class Level001 extends World{
@@ -30,6 +32,13 @@ class Level001 extends World{
         temp++;
         add(collision);
       }
+
+      add(SpawnComponent(
+        factory: (index) {
+          return VampireCoin();
+        }, period: 1,
+        area: Rectangle.fromLTWH(32, 32, 32*38, 32*23)
+      ));
     }
 
     return super.onLoad();
