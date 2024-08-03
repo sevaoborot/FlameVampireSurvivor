@@ -9,7 +9,7 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
 
   bool _isActive = false;
   bool get isActive {return _isActive;}
-  double _coinOpacity = 0;
+  double _coinOpacity = 1;
   CircleHitbox _coinHitbox = CircleHitbox(
     radius: 4,
     collisionType: CollisionType.inactive
@@ -32,11 +32,11 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
 
   void setActive(bool status){
     if (status == true) {
-      _coinOpacity = 1;
+      //_coinOpacity = 1;
       _coinHitbox.collisionType = CollisionType.passive;
       _isActive = true;
     } else {
-      _coinOpacity = 0;
+      //_coinOpacity = 0;
       _coinHitbox.collisionType = CollisionType.inactive;
       _isActive = false;
     }
