@@ -7,14 +7,39 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
 
   //late int _coinValue;
 
-  VampireCoin(): super(
-    size: Vector2.all(8),
-    priority: 1
+  bool _isActive = false;
+  bool get isActive {return _isActive;}
+  double _coinOpacity = 0;
+  CircleHitbox _coinHitbox = CircleHitbox(
+    radius: 4,
+    collisionType: CollisionType.inactive
   );
+
+  VampireCoin(Vector2 position, [bool status = false]): super(
+    size: Vector2.all(8),
+    priority: 1,
+    position: position
+  ) {
+    _isActive = status;
+  }
 
   @override
   Future<void> onLoad() async{
     sprite = Sprite(Flame.images.fromCache('coin.png'));
+    opacity = _coinOpacity;
+    add(_coinHitbox);
+  }
+
+  void setActive(bool status){
+    if (status == true) {
+      _coinOpacity = 1;
+      _coinHitbox.collisionType = CollisionType.passive;
+      _isActive = true;
+    } else {
+      _coinOpacity = 0;
+      _coinHitbox.collisionType = CollisionType.inactive;
+      _isActive = false;
+    }
   }
 
   @override
