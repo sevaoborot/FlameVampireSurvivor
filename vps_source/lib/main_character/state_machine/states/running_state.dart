@@ -9,7 +9,6 @@ class RunningState extends MovementState{
   @override
   void Enter(){
     super.Enter();
-    print('running');
     character.animation = character.moveAnimation[data.xyInputLast]
       ?..stepTime = 0.1;
   }

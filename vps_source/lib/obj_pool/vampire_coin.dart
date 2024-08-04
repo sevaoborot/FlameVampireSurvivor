@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:vps_source/obj_pool/new_object_pool.dart';
 import 'package:vps_source/vps_game.dart';
 
 class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameReference<VpsGame> {
@@ -26,7 +27,7 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
   @override
   Future<void> onLoad() async{
     sprite = Sprite(Flame.images.fromCache('coin.png'));
-    opacity = _coinOpacity;
+    opacity = 1;
     add(_coinHitbox);
   }
 
@@ -39,12 +40,15 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
       //_coinOpacity = 0;
       _coinHitbox.collisionType = CollisionType.inactive;
       _isActive = false;
+      this.position = Vector2(-1000, -1000);
     }
   }
 
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other){
     //тут при касании монетки что должно выполняться
+    NewObjectPool.pool.PoolRelease(this);
+    print('coin picked');
     super.onCollisionStart(intersectionPoints, other);
   }
 

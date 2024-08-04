@@ -17,15 +17,17 @@ class NewObjectPool{
   }
 
   VampireCoin PoolGet(Vector2 newPosition, VampireCoin AddCoin()){
-    VampireCoin? obj = null;
-    for (VampireCoin coin in _coins){
-      if (coin.isActive == false) obj = coin;
-      else obj=null;
+    for (VampireCoin coin in pool._coins){
+      if (coin.isActive == false) {
+        coin.setActive(true);
+        coin.position = newPosition;
+        return coin;
+      }
     }
-    if (obj==null) obj = _PoolAdd(AddCoin);
-    obj.setActive(true);
-    obj.position = newPosition;
-    return obj;
+    _PoolAdd(AddCoin);
+    pool._coins.last.setActive(true);
+    pool._coins.last.position = newPosition;
+    return pool._coins.last;
   }
 
   void PoolRelease(VampireCoin obj){
@@ -48,5 +50,7 @@ class NewObjectPool{
     }
     return '';
   }
+
+  void number() => print(pool._coins.length);
 
 }

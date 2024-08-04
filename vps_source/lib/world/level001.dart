@@ -65,10 +65,11 @@ class Level001 extends World{
   void onTick(){
     coinKeeper.PoolGet(NewPosition(), AddNewCoin);
     print('new coin'); //почему не показывает спрайт?
+    coinKeeper.number();
   }
 
   VampireCoin AddNewCoin(){
-    VampireCoin newCoin = VampireCoin(Vector2.zero());
+    VampireCoin newCoin = VampireCoin(Vector2(-1000, -1000));
     add(newCoin);
     return newCoin;
   }
