@@ -64,8 +64,8 @@ class Level001 extends World{
 
   void onTick(){
     coinKeeper.PoolGet(NewPosition(), AddNewCoin);
-    print('new coin'); //почему не показывает спрайт?
-    coinKeeper.number();
+    //print('new coin'); //почему не показывает спрайт?
+    //coinKeeper.number();
   }
 
   VampireCoin AddNewCoin(){

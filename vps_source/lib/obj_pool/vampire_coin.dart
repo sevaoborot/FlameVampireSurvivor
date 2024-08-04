@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:vps_source/obj_pool/icoin_picker.dart';
 import 'package:vps_source/obj_pool/new_object_pool.dart';
 import 'package:vps_source/vps_game.dart';
 
@@ -46,14 +47,16 @@ class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameRefere
 
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other){
-    //тут при касании монетки что должно выполняться
+    if (other is ICoinPicker) {
+      AddCoinTo(other as ICoinPicker);
+    }
     NewObjectPool.pool.PoolRelease(this);
-    print('coin picked');
     super.onCollisionStart(intersectionPoints, other);
   }
 
-  void addCoins(){
-    //тут закидываем в игрока монетку
+  void AddCoinTo(ICoinPicker picker){
+    picker.AddCoin();
+    print("adding coin");
   }
 
 }

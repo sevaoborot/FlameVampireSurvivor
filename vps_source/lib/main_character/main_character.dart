@@ -1,15 +1,15 @@
-import 'dart:ui';
-
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:vps_source/obj_pool/icoin_picker.dart';
 
 import 'package:vps_source/vps_game.dart';
 import 'package:vps_source/world/level_collisions.dart';
 import 'mc_controller.dart';
 import 'state_machine/state_machine.dart';
 
-class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>, CollisionCallbacks{
+class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGame>, CollisionCallbacks
+    implements ICoinPicker{
 
   @override
   bool get debugMode => true;
@@ -193,6 +193,19 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
     _stateMachine.HandleInput();
     _stateMachine.StateUpdate(dt);
     super.update(dt);
+  }
+
+  int _coinsCollected = 0;
+
+  @override
+  void AddCoin() {
+    _coinsCollected++;
+    printCoins();
+  }
+
+  @override
+  void printCoins(){
+    print(_coinsCollected);
   }
 
 }
