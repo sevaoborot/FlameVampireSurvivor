@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/foundation.dart';
 import 'package:vps_source/obj_pool/icoin_picker.dart';
 
 import 'package:vps_source/vps_game.dart';
@@ -153,7 +154,6 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other){
-
     super.onCollisionStart(intersectionPoints, other);
   }
 
@@ -184,7 +184,6 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
 
   @override
   void onCollisionEnd(PositionComponent other){
-
     super.onCollisionEnd(other);
   }
 
@@ -196,10 +195,12 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
   }
 
   int _coinsCollected = 0;
+  final ValueNotifier<int> coinsCount = ValueNotifier<int>(0);
 
   @override
   void AddCoin() {
     _coinsCollected++;
+    coinsCount.value++;
     printCoins();
   }
 
@@ -207,5 +208,4 @@ class MainCharacter extends SpriteAnimationComponent with HasGameReference<VpsGa
   void printCoins(){
     print(_coinsCollected);
   }
-
 }

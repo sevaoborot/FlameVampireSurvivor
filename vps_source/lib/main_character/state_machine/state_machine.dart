@@ -8,7 +8,7 @@ import 'package:vps_source/main_character/state_machine/states/walking_state.dar
 
 class StateMachine implements IStateSwitcher{
 
-  late IState _currentState; //яно нужен будет '!' так как не должен быть null
+  late IState _currentState;
   late List<IState> _states;
 
   StateMachine(MainCharacter character){

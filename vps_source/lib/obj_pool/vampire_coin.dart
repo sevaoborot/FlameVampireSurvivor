@@ -7,8 +7,6 @@ import 'package:vps_source/vps_game.dart';
 
 class VampireCoin extends SpriteComponent with CollisionCallbacks, HasGameReference<VpsGame> {
 
-  //late int _coinValue;
-
   bool _isActive = false;
   bool get isActive {return _isActive;}
   double _coinOpacity = 1;

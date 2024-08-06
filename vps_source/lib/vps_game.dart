@@ -5,6 +5,7 @@ import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame/sprite.dart';
+import 'package:vps_source/UI/coins_num.dart';
 import 'package:vps_source/main_character/main_character.dart';
 import 'package:vps_source/world/level001.dart';
 
@@ -19,15 +20,20 @@ class VpsGame extends FlameGame with HasKeyboardHandlerComponents, HasCollisionD
     await Flame.images.loadAll([
       'character_sprites.png',
       'coin.png'
+
+      //тут прописываем overlays
     ]);
 
     world = Level001();
     mainCharacter = MainCharacter();
     world.add(mainCharacter);
-
+    
     camera.viewfinder.visibleGameSize = Vector2(1000, 500);
     camera.viewfinder.position = Vector2(500, 250);
     camera.viewfinder.anchor = Anchor.center;
+
+    //ниже прописываем элементы UI
+    camera.viewport.add(CoinsNumber(mainCharacter.coinsCount));
   }
 
   @override

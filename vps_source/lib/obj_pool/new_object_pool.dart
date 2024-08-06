@@ -43,7 +43,6 @@ class NewObjectPool{
   String toString(){
     int i = 0;
     for(VampireCoin coin in _coins) {
-
       print(i);
       print(coin.isActive);
       i++;

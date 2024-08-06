@@ -16,7 +16,7 @@ class Level001 extends World{
   late Timer spawner;
   late NewObjectPool coinKeeper;
 
-  int initCoinsNumber = 10;
+  final int initCoinsNumber = 50;
 
   @override
   FutureOr<void> onLoad() async {
@@ -64,8 +64,6 @@ class Level001 extends World{
 
   void onTick(){
     coinKeeper.PoolGet(NewPosition(), AddNewCoin);
-    //print('new coin'); //почему не показывает спрайт?
-    //coinKeeper.number();
   }
 
   VampireCoin AddNewCoin(){
